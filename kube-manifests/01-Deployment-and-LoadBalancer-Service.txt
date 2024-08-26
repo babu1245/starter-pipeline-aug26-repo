@@ -1,0 +1,30 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: babuaugrepoaug24 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: babuaugrepoaug24
+  template:
+    metadata:
+      labels:
+        app: babuaugrepoaug24 
+    spec:
+      containers:
+        - name: babuaugrepoaug24 
+          image: aug24registry.azurecr.io/babuaugrepoaug24
+          ports:
+          - containerPort: 80
+- - -
+apiVersion: v1
+kind: Service
+metadata:
+    name: babuaugrepoaug24
+spec:
+    type: LoadBalancer
+    ports:
+    - port: 80 
+    selector:
+        app: babuaugrepoaug24
